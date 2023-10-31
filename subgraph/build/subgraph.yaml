@@ -1,0 +1,26 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DocumentManagement
+    network: mumbai
+    source:
+      address: "0x45f8182632D06513DbF1e3A9F33F3881A2EF2809"
+      abi: DocumentManagement
+      startBlock: 24728768
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Cheque
+      abis:
+        - name: DocumentManagement
+          file: DocumentManagement/abis/DocumentManagement.json
+      eventHandlers:
+        - event: ChequeCreated(uint256,string,string)
+          handler: handleChequeCreated
+        - event: ChequeUpdated(uint256,string,string,bool)
+          handler: handleChequeUpdated
+      file: DocumentManagement/DocumentManagement.wasm

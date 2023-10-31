@@ -1,0 +1,17 @@
+type _Schema_
+  @fulltext(
+    name: "chequeSearch"
+    language: en
+    algorithm: rank
+    include: [{ entity: "Cheque", fields: [{ name: "title" }, { name: "chequeContent" }] }]
+  )
+
+type Cheque @entity {
+  id: ID!
+  title: String!
+  contentHash: String!
+  published: Boolean!
+  chequeContent: String!
+  createdAtTimestamp: BigInt!
+  updatedAtTimestamp: BigInt!
+}
